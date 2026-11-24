@@ -1,0 +1,284 @@
+@import "tailwindcss";
+@import "@fontsource/outfit/latin-400.css";
+@import "@fontsource/outfit/latin-500.css";
+@import "@fontsource/outfit/latin-600.css";
+@import "@fontsource/outfit/latin-700.css";
+@import "@fontsource/oswald/latin-500.css";
+@import "@fontsource/oswald/latin-600.css";
+
+@theme {
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --color-bg: #121614;
+  --color-surface: #1c231f;
+  --color-line: #343b36;
+  --color-fg: #f4efe4;
+  --color-muted: #9c968a;
+  --color-primary: #e4572e;
+  --color-court: #c9a36a;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  button,
+  [role="button"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .pb-nav {
+    padding-bottom: calc(5.75rem + env(safe-area-inset-bottom));
+  }
+  .pb-safe {
+    padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+  }
+}
+
+.motion .player,
+.motion .ball,
+.motion .ball-b,
+.motion .cone {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.motion .player {
+  left: 50%;
+  top: 74%;
+  width: 1.35rem;
+  height: 1.35rem;
+  border: 2px solid var(--color-bg);
+  border-radius: 999px;
+}
+.motion .ball,
+.motion .ball-b {
+  left: 50%;
+  top: 68%;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 999px;
+  background: var(--color-primary);
+  animation: m-form 2.15s ease-in-out infinite;
+}
+.motion .ball-b {
+  display: none;
+}
+.motion .cone {
+  top: 60%;
+  width: 0.55rem;
+  height: 0.7rem;
+  background: var(--color-bg);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.motion .cone-a {
+  left: 24%;
+}
+.motion .cone-b {
+  left: 76%;
+}
+
+.motion[data-motion="form"] .cone,
+.motion[data-motion="voice"] .cone,
+.motion[data-motion="pound"] .cone,
+.motion[data-motion="twoball"] .cone {
+  opacity: 0;
+}
+.motion[data-motion="pound"] .ball {
+  animation-name: m-pound;
+  animation-duration: 0.55s;
+}
+.motion[data-motion="cross"] .ball {
+  animation-name: m-cross;
+  animation-duration: 0.9s;
+}
+.motion[data-motion="layup"] .player {
+  left: 30%;
+  top: 64%;
+}
+.motion[data-motion="layup"] .ball {
+  left: 30%;
+  top: 58%;
+  animation-name: m-layup;
+}
+.motion[data-motion="slide"] .player,
+.motion[data-motion="slide"] .ball {
+  animation-name: m-slide;
+  animation-duration: 2.2s;
+}
+.motion[data-motion="pace"] .player,
+.motion[data-motion="pace"] .ball {
+  animation-name: m-pace;
+  animation-duration: 2.1s;
+}
+.motion[data-motion="attack"] .player {
+  top: 80%;
+}
+.motion[data-motion="attack"] .ball {
+  animation-name: m-attack;
+  animation-duration: 1.35s;
+}
+.motion[data-motion="kick"] .player {
+  top: 80%;
+}
+.motion[data-motion="kick"] .ball {
+  animation-name: m-kick;
+  animation-duration: 1.8s;
+}
+.motion[data-motion="voice"] .ball {
+  animation-name: m-voice;
+  animation-duration: 1.4s;
+}
+.motion[data-motion="twoball"] .ball {
+  animation-name: m-two-a;
+  animation-duration: 0.7s;
+}
+.motion[data-motion="twoball"] .ball-b {
+  display: block;
+  animation: m-two-b 0.7s ease-in-out infinite;
+}
+
+@keyframes m-form {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  68% {
+    transform: translate(-50%, calc(-50% - 5.1rem)) scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, calc(-50% - 5.1rem)) scale(0.6);
+    opacity: 0.15;
+  }
+}
+@keyframes m-pound {
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, calc(-50% + 0.95rem));
+  }
+}
+@keyframes m-cross {
+  0%,
+  100% {
+    transform: translate(calc(-50% - 1.8rem), -50%);
+  }
+  50% {
+    transform: translate(calc(-50% + 1.8rem), -50%);
+  }
+}
+@keyframes m-layup {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + 4.2rem), calc(-50% - 4.2rem)) scale(0.65);
+    opacity: 0.3;
+  }
+}
+@keyframes m-slide {
+  0%,
+  100% {
+    transform: translate(calc(-50% - 4.2rem), -50%);
+  }
+  50% {
+    transform: translate(calc(-50% + 4.2rem), -50%);
+  }
+}
+@keyframes m-pace {
+  0% {
+    transform: translate(calc(-50% - 5rem), -50%);
+  }
+  42% {
+    transform: translate(calc(-50% - 1.2rem), -50%);
+  }
+  58% {
+    transform: translate(calc(-50% - 0.6rem), -50%);
+  }
+  100% {
+    transform: translate(calc(-50% + 5rem), -50%);
+  }
+}
+@keyframes m-attack {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, calc(-50% - 5rem)) scale(0.7);
+    opacity: 0.35;
+  }
+}
+@keyframes m-kick {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  46% {
+    transform: translate(-50%, calc(-50% - 2.4rem));
+  }
+  100% {
+    transform: translate(calc(-50% + 5.4rem), calc(-50% - 0.6rem));
+  }
+}
+@keyframes m-voice {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.45);
+    opacity: 0.45;
+  }
+}
+@keyframes m-two-a {
+  0%,
+  100% {
+    transform: translate(calc(-50% - 1.15rem), -50%);
+  }
+  50% {
+    transform: translate(calc(-50% - 1.15rem), calc(-50% + 0.9rem));
+  }
+}
+@keyframes m-two-b {
+  0%,
+  100% {
+    transform: translate(calc(-50% + 1.15rem), calc(-50% + 0.9rem));
+  }
+  50% {
+    transform: translate(calc(-50% + 1.15rem), -50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion .ball,
+  .motion .ball-b,
+  .motion .player {
+    animation: none !important;
+  }
+}

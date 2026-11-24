@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Court Creed">
+  <rect width="32" height="32" rx="7" fill="#121614"/>
+  <circle cx="16" cy="16" r="10" fill="#e4572e"/>
+  <path d="M16 6v20M6 16h20" stroke="#121614" stroke-width="3" fill="none"/>
+</svg>

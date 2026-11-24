@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Court Creed",
+      "hasCanvas": false,
+      "bodyTextLen": 607,
+      "bodyTextHash": "0a05b2c8c1de48081626cd4ed64dad676886b458287e11cdb926f391289b1972",
+      "bodyTextPrefix": "DASHBOARD COURT CREED 0 Your jersey Tap to add a name · Guard · ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Court Creed",
+      "hasCanvas": false,
+      "bodyTextLen": 607,
+      "bodyTextHash": "0a05b2c8c1de48081626cd4ed64dad676886b458287e11cdb926f391289b1972",
+      "bodyTextPrefix": "DASHBOARD COURT CREED 0 Your jersey Tap to add a name · Guard · ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
